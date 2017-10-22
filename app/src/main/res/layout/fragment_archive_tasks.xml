@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.noonight.pc.tasks.view.ArchiveTasksFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/archive_tasks_hello"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorText"/>
+
+</FrameLayout>
