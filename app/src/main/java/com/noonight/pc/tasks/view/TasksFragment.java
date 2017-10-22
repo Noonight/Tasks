@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.noonight.pc.tasks.R;
-import com.noonight.pc.tasks.common.preInterface.view.TasksView;
+import com.noonight.pc.tasks.base.preInterface.view.TasksView;
 
 public class TasksFragment extends Fragment implements TasksView {
 

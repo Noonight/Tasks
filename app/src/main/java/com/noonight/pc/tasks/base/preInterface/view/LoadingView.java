@@ -1,4 +1,4 @@
-package com.noonight.pc.tasks.common.preInterface.view;
+package com.noonight.pc.tasks.base.preInterface.view;
 
 
 public interface LoadingView {

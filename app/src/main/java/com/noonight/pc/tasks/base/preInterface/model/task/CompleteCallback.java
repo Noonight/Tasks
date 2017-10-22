@@ -1,4 +1,4 @@
-package com.noonight.pc.tasks.common.preInterface.model.task;
+package com.noonight.pc.tasks.base.preInterface.model.task;
 
 
 public interface CompleteCallback {

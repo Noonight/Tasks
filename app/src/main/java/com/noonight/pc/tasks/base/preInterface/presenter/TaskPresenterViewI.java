@@ -1,4 +1,4 @@
-package com.noonight.pc.tasks.common.preInterface.presenter;
+package com.noonight.pc.tasks.base.preInterface.presenter;
 
 
 public interface TaskPresenterViewI extends MainPresenterI {
@@ -6,6 +6,8 @@ public interface TaskPresenterViewI extends MainPresenterI {
     void addTask();
 
     void loadTasks();
+
+    void loadTask();
 
     void deleteTask();
 

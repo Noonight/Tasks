@@ -11,4 +11,6 @@
     <string name="delete_complete">Delete complete.</string>
     <string name="update_complete">Update complete.</string>
     <string name="toolbar_new_task">New task ...</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description">hint_description</string>
 </resources>

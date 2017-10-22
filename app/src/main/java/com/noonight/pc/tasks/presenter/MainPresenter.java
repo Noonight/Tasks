@@ -1,12 +1,12 @@
 package com.noonight.pc.tasks.presenter;
 
-import com.noonight.pc.tasks.common.preInterface.presenter.MainPresenterI;
-import com.noonight.pc.tasks.common.preInterface.view.MainView;
+import com.noonight.pc.tasks.base.preInterface.presenter.MainPresenterI;
+import com.noonight.pc.tasks.base.preInterface.view.ParentView;
 import com.noonight.pc.tasks.model.TaskModel;
 
 public class MainPresenter implements MainPresenterI {
 
-    private MainView view;
+    private ParentView view;
     private final TaskModel model;
 
     public MainPresenter(TaskModel model) {
@@ -14,8 +14,8 @@ public class MainPresenter implements MainPresenterI {
     }
 
     @Override
-    public void attachView(MainView mainView) {
-        view = mainView;
+    public void attachView(ParentView parentView) {
+        view = parentView;
     }
 
     @Override

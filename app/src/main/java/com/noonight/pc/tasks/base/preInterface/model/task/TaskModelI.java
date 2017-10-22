@@ -1,17 +1,19 @@
-package com.noonight.pc.tasks.common.preInterface.model.task;
+package com.noonight.pc.tasks.base.preInterface.model.task;
 
 
 import android.content.ContentValues;
 
 public interface TaskModelI{
 
-    void loadTasks(LoadTaskCallback loadTaskCallback);
+    void loadTasks(LoadTasksCallback loadTasksCallback);
+
+    void loadTask(Integer id, LoadTaskCallback loadTaskCallback);
 
     void addTask(ContentValues cv, CompleteCallback callback);
 
     void deleteTasks(CompleteCallback callback);
 
-    void deleteTask(ContentValues cv, CompleteCallback callback);
+    void deleteTask(Integer id, CompleteCallback callback);
 
     void updateTask(ContentValues cv, CompleteCallback callback);
 }

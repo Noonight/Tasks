@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.noonight.pc.tasks.view.MainActivity">
+    tools:context="com.noonight.pc.tasks.view.ParentActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

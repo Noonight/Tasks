@@ -1,7 +1,6 @@
-package com.noonight.pc.tasks.extensions;
+package com.noonight.pc.tasks.common.extensions;
 
 import android.text.TextUtils;
-import android.util.Log.*;
 
 public class Log {
     public static void d(String message) {

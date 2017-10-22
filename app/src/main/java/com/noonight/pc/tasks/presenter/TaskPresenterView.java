@@ -2,10 +2,10 @@ package com.noonight.pc.tasks.presenter;
 
 
 import com.noonight.pc.tasks.common.database.models.Task;
-import com.noonight.pc.tasks.common.preInterface.model.task.LoadTaskCallback;
-import com.noonight.pc.tasks.common.preInterface.presenter.TaskPresenterViewI;
-import com.noonight.pc.tasks.common.preInterface.view.MainView;
-import com.noonight.pc.tasks.common.preInterface.view.TasksView;
+import com.noonight.pc.tasks.base.preInterface.model.task.LoadTasksCallback;
+import com.noonight.pc.tasks.base.preInterface.presenter.TaskPresenterViewI;
+import com.noonight.pc.tasks.base.preInterface.view.ParentView;
+import com.noonight.pc.tasks.base.preInterface.view.TasksView;
 import com.noonight.pc.tasks.model.TaskModel;
 
 import java.util.List;
@@ -21,12 +21,17 @@ public class TaskPresenterView implements TaskPresenterViewI {
 
     @Override
     public void loadTasks() {
-        model.loadTasks(new LoadTaskCallback() {
+        model.loadTasks(new LoadTasksCallback() {
             @Override
             public void onLoad(List<Task> tasks) {
                 view.showTasks();
             }
         });
+    }
+
+    @Override
+    public void loadTask() {
+
     }
 
     @Override
@@ -50,8 +55,8 @@ public class TaskPresenterView implements TaskPresenterViewI {
     }
 
     @Override
-    public void attachView(MainView mainView) {
-        view = (TasksView) mainView;
+    public void attachView(ParentView parentView) {
+        view = (TasksView) parentView;
     }
 
     @Override

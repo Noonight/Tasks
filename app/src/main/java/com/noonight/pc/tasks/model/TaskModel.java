@@ -5,12 +5,13 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.AsyncTask;
 
+import com.noonight.pc.tasks.base.preInterface.model.task.LoadTaskCallback;
 import com.noonight.pc.tasks.common.database.DBHelper;
 import com.noonight.pc.tasks.common.database.models.Task;
 import com.noonight.pc.tasks.common.database.tables.TaskTable;
-import com.noonight.pc.tasks.common.preInterface.model.task.CompleteCallback;
-import com.noonight.pc.tasks.common.preInterface.model.task.LoadTaskCallback;
-import com.noonight.pc.tasks.common.preInterface.model.task.TaskModelI;
+import com.noonight.pc.tasks.base.preInterface.model.task.CompleteCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.LoadTasksCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.TaskModelI;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,9 +24,15 @@ public class TaskModel implements TaskModelI{
     }
 
     @Override
-    public void loadTasks(LoadTaskCallback loadTaskCallback) {
-        LoadTasks loadTasks = new LoadTasks(loadTaskCallback);
+    public void loadTasks(LoadTasksCallback loadTasksCallback) {
+        LoadTasks loadTasks = new LoadTasks(loadTasksCallback);
         loadTasks.execute();
+    }
+
+    @Override
+    public void loadTask(Integer id, LoadTaskCallback loadTaskCallback) {
+        LoadTask loadTask = new LoadTask(loadTaskCallback);
+        loadTask.execute(id);
     }
 
     @Override
@@ -41,15 +48,46 @@ public class TaskModel implements TaskModelI{
     }
 
     @Override
-    public void deleteTask(ContentValues cv, CompleteCallback callback) {
+    public void deleteTask(Integer id, CompleteCallback callback) {
         DeleteTask deleteTask = new DeleteTask(callback);
-        deleteTask.execute(cv);
+        deleteTask.execute(id);
     }
 
     @Override
     public void updateTask(ContentValues cv, CompleteCallback callback) {
         UpdateTask updateTask = new UpdateTask(callback);
         updateTask.execute(cv);
+    }
+
+    class LoadTask extends AsyncTask<Integer, Void, Task> {
+
+        private final LoadTaskCallback callback;
+
+        LoadTask(LoadTaskCallback callback) {
+            this.callback = callback;
+        }
+
+        @Override
+        protected Task doInBackground(Integer... integers) {
+            String selection = "id = ?";
+            int selectionArgs = integers[0];
+            Cursor cursor = dbHelper.getReadableDatabase().query(TaskTable.TABLE, null, selection, new String[] {String.valueOf(selectionArgs)}, null, null, null);
+            Task task = new Task();
+            task.setId(cursor.getLong(cursor.getColumnIndex(TaskTable.COLUMN.ID)));
+            task.setTitle(cursor.getString(cursor.getColumnIndex(TaskTable.COLUMN.TITLE)));
+            task.setDescription(cursor.getString(cursor.getColumnIndex(TaskTable.COLUMN.DESCRIPTION)));
+            task.setType(cursor.getString(cursor.getColumnIndex(TaskTable.COLUMN.TYPE)));
+            cursor.close();
+            return task;
+        }
+
+        @Override
+        protected void onPostExecute(Task task) {
+            super.onPostExecute(task);
+            if (callback != null)  {
+                callback.onLoad(task);
+            }
+        }
     }
 
     class UpdateTask extends AsyncTask<ContentValues, Void, Void> {
@@ -76,7 +114,7 @@ public class TaskModel implements TaskModelI{
         }
     }
 
-    class DeleteTask extends AsyncTask<ContentValues, Void, Void> {
+    class DeleteTask extends AsyncTask<Integer, Void, Void> {
 
         private final CompleteCallback callback;
 
@@ -85,9 +123,9 @@ public class TaskModel implements TaskModelI{
         }
 
         @Override
-        protected Void doInBackground(ContentValues... contentValues) {
-            ContentValues cvTask = contentValues[0];
-            dbHelper.getWritableDatabase().delete(TaskTable.TABLE, "id = " + cvTask.get(TaskTable.COLUMN.ID), null);
+        protected Void doInBackground(Integer... integers) {
+            String selectionArgs = String.valueOf(integers[0]);
+            dbHelper.getWritableDatabase().delete(TaskTable.TABLE, "id = " + selectionArgs, null);
             return null;
         }
 
@@ -125,9 +163,9 @@ public class TaskModel implements TaskModelI{
 
     class LoadTasks extends AsyncTask<Void, Void, List<Task>> {
 
-        private final LoadTaskCallback callback;
+        private final LoadTasksCallback callback;
 
-        LoadTasks(LoadTaskCallback callback) {
+        LoadTasks(LoadTasksCallback callback) {
             this.callback = callback;
         }
 
