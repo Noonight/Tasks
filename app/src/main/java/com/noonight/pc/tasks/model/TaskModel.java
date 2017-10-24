@@ -5,12 +5,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.AsyncTask;
 
-import com.noonight.pc.tasks.base.preInterface.model.task.LoadTaskCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.LoadTaskCallback;
 import com.noonight.pc.tasks.common.database.DBHelper;
 import com.noonight.pc.tasks.common.database.models.Task;
 import com.noonight.pc.tasks.common.database.tables.TaskTable;
-import com.noonight.pc.tasks.base.preInterface.model.task.CompleteCallback;
-import com.noonight.pc.tasks.base.preInterface.model.task.LoadTasksCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.CompleteCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.LoadTasksCallback;
 import com.noonight.pc.tasks.base.preInterface.model.task.TaskModelI;
 
 import java.util.LinkedList;

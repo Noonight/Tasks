@@ -1,4 +1,4 @@
-package com.noonight.pc.tasks.base.preInterface.model.task;
+package com.noonight.pc.tasks.base.preInterface.model.task.callback;
 
 
 import com.noonight.pc.tasks.common.database.models.Task;

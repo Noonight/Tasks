@@ -14,18 +14,17 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.noonight.pc.tasks.R;
-import com.noonight.pc.tasks.base.preInterface.view.MainView;
-import com.noonight.pc.tasks.base.preInterface.view.ParentView;
+import com.noonight.pc.tasks.base.preInterface.view.HomeView;
 import com.noonight.pc.tasks.common.adapters.PagerAdapter;
 import com.noonight.pc.tasks.common.database.DBHelper;
 import com.noonight.pc.tasks.common.extensions.Log;
 import com.noonight.pc.tasks.model.TaskModel;
-import com.noonight.pc.tasks.presenter.ParentActivityPresenterI;
+import com.noonight.pc.tasks.presenter.HomePresenterImpl;
 
-public class ParentActivity extends AppCompatActivity implements ParentView{
+public class HomeActivity extends AppCompatActivity implements HomeView {
 
     private ProgressDialog progress;
-    private ParentActivityPresenterI presenter;
+    private HomePresenterImpl presenter;
     private PagerAdapter pagerAdapter;
 
     @Override
@@ -40,7 +39,7 @@ public class ParentActivity extends AppCompatActivity implements ParentView{
 
         DBHelper dbHelper = new DBHelper(this);
         TaskModel taskModel = new TaskModel(dbHelper);
-        presenter = new ParentActivityPresenterI(taskModel);
+        presenter = new HomePresenterImpl(taskModel);
         presenter.attachView(this);
         //presenter.viewIsReady();
     }
@@ -110,13 +109,8 @@ public class ParentActivity extends AppCompatActivity implements ParentView{
 
     @Override
     public void openAddActivty() {
-        startActivity(new Intent(this, AddTaskActivity.class));
-        Log.d("start Activty {AddTaskActivity}");
-    }
-
-    @Override
-    public void deleteTasks() {
-        presenter.deleteTasks();
+        startActivity(new Intent(this, AddActivity.class));
+        Log.d("start Activty {AddActivity}");
     }
 
     @Override

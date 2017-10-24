@@ -3,6 +3,10 @@ package com.noonight.pc.tasks.base.preInterface.model.task;
 
 import android.content.ContentValues;
 
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.CompleteCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.LoadTaskCallback;
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.LoadTasksCallback;
+
 public interface TaskModelI{
 
     void loadTasks(LoadTasksCallback loadTasksCallback);

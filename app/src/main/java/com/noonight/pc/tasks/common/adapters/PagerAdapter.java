@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.noonight.pc.tasks.view.ArchiveTasksFragment;
-import com.noonight.pc.tasks.view.ToDoTasksFragment;
+import com.noonight.pc.tasks.view.ArchiveFragment;
+import com.noonight.pc.tasks.view.ToDoFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private int mCountTabs;
@@ -27,11 +27,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                ToDoTasksFragment toDoTasksFragment = ToDoTasksFragment.newInstance(new Bundle());
+                ToDoFragment toDoTasksFragment = ToDoFragment.newInstance(new Bundle());
                 return toDoTasksFragment;
             case 1:
-                ArchiveTasksFragment archiveTasksFragment = ArchiveTasksFragment.newInstance(new Bundle());
-                return archiveTasksFragment;
+                ArchiveFragment archiveFragment = ArchiveFragment.newInstance(new Bundle());
+                return archiveFragment;
             default:
                 return null;
         }

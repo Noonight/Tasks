@@ -1,6 +1,5 @@
 package com.noonight.pc.tasks.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,22 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.noonight.pc.tasks.R;
-import com.noonight.pc.tasks.base.preInterface.presenter.ToDoTaskFragmentPresenter;
-import com.noonight.pc.tasks.base.preInterface.view.ToDoTasksFragmentView;
+import com.noonight.pc.tasks.base.preInterface.presenter.ToDoPresenter;
+import com.noonight.pc.tasks.base.preInterface.view.ToDoView;
 import com.noonight.pc.tasks.common.adapters.TaskAdapter;
 import com.noonight.pc.tasks.common.database.models.Task;
 
 import java.util.List;
 
-public class ToDoTasksFragment extends Fragment implements ToDoTasksFragmentView {
+public class ToDoFragment extends Fragment implements ToDoView {
 
-    private ToDoTaskFragmentPresenter presenter;
+    private ToDoPresenter presenter;
     private TaskAdapter adapter;
-    private static ParentActivity parent;
 
-    public static ToDoTasksFragment newInstance(ParentActivity parentActivity, Bundle bundle) {
-        ToDoTasksFragment newThis = new ToDoTasksFragment();
-        parent = parentActivity;
+    public static ToDoFragment newInstance(Bundle bundle) {
+        ToDoFragment newThis = new ToDoFragment();
         newThis.setArguments(bundle);
         return newThis;
     }
@@ -44,11 +41,6 @@ public class ToDoTasksFragment extends Fragment implements ToDoTasksFragmentView
     @Override
     public void showTasks(List<Task> tasks) {
         adapter.setData(tasks);
-    }
-
-    @Override
-    public void openUpdateActivty() {
-        parent.openAddActivty();
     }
 
     @Override
