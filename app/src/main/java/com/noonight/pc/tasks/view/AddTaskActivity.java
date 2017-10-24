@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.noonight.pc.tasks.R;
-import com.noonight.pc.tasks.base.preInterface.view.AddView;
 
 public class AddTaskActivity extends AppCompatActivity implements AddView{
 

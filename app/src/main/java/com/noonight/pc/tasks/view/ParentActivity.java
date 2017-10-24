@@ -8,23 +8,24 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.noonight.pc.tasks.R;
 import com.noonight.pc.tasks.base.preInterface.view.MainView;
 import com.noonight.pc.tasks.base.preInterface.view.ParentView;
-import com.noonight.pc.tasks.base.preInterface.view.TasksView;
 import com.noonight.pc.tasks.common.adapters.PagerAdapter;
 import com.noonight.pc.tasks.common.database.DBHelper;
 import com.noonight.pc.tasks.common.extensions.Log;
 import com.noonight.pc.tasks.model.TaskModel;
-import com.noonight.pc.tasks.presenter.MainPresenter;
+import com.noonight.pc.tasks.presenter.ParentActivityPresenterI;
 
-public class ParentActivity extends AppCompatActivity implements MainView{
+public class ParentActivity extends AppCompatActivity implements ParentView{
 
     private ProgressDialog progress;
-    private MainPresenter presenter;
+    private ParentActivityPresenterI presenter;
     private PagerAdapter pagerAdapter;
 
     @Override
@@ -39,7 +40,7 @@ public class ParentActivity extends AppCompatActivity implements MainView{
 
         DBHelper dbHelper = new DBHelper(this);
         TaskModel taskModel = new TaskModel(dbHelper);
-        presenter = new MainPresenter(taskModel);
+        presenter = new ParentActivityPresenterI(taskModel);
         presenter.attachView(this);
         //presenter.viewIsReady();
     }
@@ -79,7 +80,7 @@ public class ParentActivity extends AppCompatActivity implements MainView{
         findViewById(R.id.toolbar_add_new).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openAddActivity();
+                openAddActivty();
             }
         });
     }
@@ -108,8 +109,31 @@ public class ParentActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void openAddActivity() {
+    public void openAddActivty() {
         startActivity(new Intent(this, AddTaskActivity.class));
         Log.d("start Activty {AddTaskActivity}");
+    }
+
+    @Override
+    public void deleteTasks() {
+        presenter.deleteTasks();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.parent_menu, menu);
+        Log.d("menu created");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_delete_tasks:
+                presenter.deleteTasks();
+                return true;
+            default:
+                return true;
+        }
     }
 }

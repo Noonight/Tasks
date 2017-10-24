@@ -1,8 +1,8 @@
 package com.noonight.pc.tasks.base.preInterface.view;
 
 
-public interface MainView extends ParentView {
+public interface MainView extends LoadingView {
 
-    void openAddActivity();
+    void showToast(String message);
 
 }

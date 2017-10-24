@@ -13,4 +13,5 @@
     <string name="toolbar_new_task">New task ...</string>
     <string name="hint_title">Title</string>
     <string name="hint_description">hint_description</string>
+    <string name="menu_delete_tasks">Delete tasks</string>
 </resources>
