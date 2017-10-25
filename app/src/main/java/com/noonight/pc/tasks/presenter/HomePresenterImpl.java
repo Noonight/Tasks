@@ -1,5 +1,6 @@
 package com.noonight.pc.tasks.presenter;
 
+import com.noonight.pc.tasks.base.preInterface.model.task.callback.CompleteCallback;
 import com.noonight.pc.tasks.base.preInterface.presenter.HomePresenter;
 import com.noonight.pc.tasks.basic.Mvp;
 import com.noonight.pc.tasks.base.preInterface.view.HomeView;
@@ -27,6 +28,7 @@ public class HomePresenterImpl implements HomePresenter {
 
     @Override
     public void viewIsReady() {
+
         Log.d("View is ready");
     }
 
@@ -36,12 +38,17 @@ public class HomePresenterImpl implements HomePresenter {
     }
 
     @Override
-    public HomePresenterImpl getThis() {
-        return this;
+    public void onMenuDeleteClicked() {
+
     }
 
     @Override
     public void deleteTasks() {
-        view.deleteTasks();
+        model.deleteTasks(new CompleteCallback() {
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
 }
