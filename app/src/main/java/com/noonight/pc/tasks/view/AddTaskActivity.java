@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.noonight.pc.tasks.R;
 
-public class AddTaskActivity extends AppCompatActivity implements AddView{
+public class AddTaskActivity extends AppCompatActivity implements AddVgit iew{
 
     private ProgressDialog progressDialog;
     private Toolbar toolbar;
