@@ -9,8 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.noonight.pc.tasks.R;
+import com.noonight.pc.tasks.base.preInterface.view.AddView;
 
+<<<<<<< HEAD:app/src/main/java/com/noonight/pc/tasks/view/AddTaskActivity.java
 public class AddTaskActivity extends AppCompatActivity implements AddVgit iew{
+=======
+public class AddActivity extends AppCompatActivity implements AddView {
+>>>>>>> bf7a1af32f9597623f14b607ec8d0da82618d6c9:app/src/main/java/com/noonight/pc/tasks/view/AddActivity.java
 
     private ProgressDialog progressDialog;
     private Toolbar toolbar;
@@ -66,12 +71,42 @@ public class AddTaskActivity extends AppCompatActivity implements AddVgit iew{
     }
 
     @Override
+    public void getTaskData() {
+
+    }
+
+    @Override
     public void showTask() {
 
     }
 
     @Override
+    public void addTask() {
+
+    }
+
+    @Override
+    public void deleteTask() {
+
+    }
+
+    @Override
+    public int getCurId() {
+        return 0;
+    }
+
+    @Override
     public void showToast(String message) {
+
+    }
+
+    @Override
+    public void openAddActivty() {
+
+    }
+
+    @Override
+    public void deleteTasks() {
 
     }
 }

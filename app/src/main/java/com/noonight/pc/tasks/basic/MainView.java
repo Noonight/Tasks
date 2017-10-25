@@ -1,5 +1,7 @@
-package com.noonight.pc.tasks.base.preInterface.view;
+package com.noonight.pc.tasks.basic;
 
+
+import com.noonight.pc.tasks.basic.LoadingView;
 
 public interface MainView extends LoadingView {
 
