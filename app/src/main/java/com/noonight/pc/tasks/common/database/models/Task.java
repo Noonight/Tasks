@@ -4,6 +4,14 @@ package com.noonight.pc.tasks.common.database.models;
 public class Task {
 
     private long id;
+
+    public Task(String title, String description, String type) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.type = type;
+    }
+
     private String title;
     private String description;
     private String type;

@@ -7,6 +7,8 @@ public interface HomePresenter extends MainPresenterI {
 
     void deleteTasks();
 
-    void onItemClicked();
+    void openAddActivity();
+
+    void onMenuDeleteClicked();
 
 }

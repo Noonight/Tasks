@@ -1,11 +1,10 @@
 package com.noonight.pc.tasks.base.preInterface.view;
 
-public interface AddView extends HomeView {
+import com.noonight.pc.tasks.basic.MainView;
+import com.noonight.pc.tasks.common.database.models.Task;
 
-    void getTaskData();
+public interface AddView extends MainView {
 
-    void showTask();
-    void addTask();
-    void deleteTask();
-    int getCurId();
+    Task getTaskData();
+
 }

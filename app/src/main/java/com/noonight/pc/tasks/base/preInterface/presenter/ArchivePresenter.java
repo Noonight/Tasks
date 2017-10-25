@@ -9,4 +9,5 @@ public interface ArchivePresenter extends MainPresenterI {
 
     void deleteTask();
 
+    void onItemClicked();
 }

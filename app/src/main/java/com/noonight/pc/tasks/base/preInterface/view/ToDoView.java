@@ -10,8 +10,4 @@ public interface ToDoView extends Mvp {
 
     void showTasks(List<Task> tasks);
 
-    void deleteTask();
-
-    int getCurId();
-
 }

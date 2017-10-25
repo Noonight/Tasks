@@ -7,6 +7,11 @@ import com.noonight.pc.tasks.basic.MainPresenterI;
  */
 
 public interface ToDoPresenter extends MainPresenterI {
+
     void loadTasks();
+
     void deleteTask();
+
+    void onItemClicked();
+
 }
