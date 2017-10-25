@@ -42,14 +42,4 @@ public class ToDoFragment extends Fragment implements ToDoView {
     public void showTasks(List<Task> tasks) {
         adapter.setData(tasks);
     }
-
-    @Override
-    public void deleteTask() {
-
-    }
-
-    @Override
-    public int getCurId() {
-        return 0;
-    }
 }
